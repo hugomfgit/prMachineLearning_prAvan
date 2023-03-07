@@ -1,5 +1,6 @@
 package es.uji.al415617;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ public class TableWithLabels extends Table{
 
     public TableWithLabels(List<String> listaDeHeaders) { //Constructor. Crea una Tabla con Etiquetas con sus cabeceras o headers.
         super(listaDeHeaders);
+        labelsToIndex=new HashMap<>();
     }
 
     public void addRowWithLabels(RowWithLabel fila){ //Añade una columna con etiquetas o RowWithLabel a la tabla.

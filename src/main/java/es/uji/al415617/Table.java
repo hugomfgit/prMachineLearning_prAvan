@@ -7,9 +7,10 @@ public class Table {
 
     public List<String> headers;
     public List<Row> filas;
+
     public Table(List<String> listaDeHeaders){ //Constructor. Crea una Tabla con sus cabeceras o headers.
         headers = listaDeHeaders;
-        filas = new ArrayList<>();
+        filas=new ArrayList<>();
     }
 
     public void addRow(Row fila){
