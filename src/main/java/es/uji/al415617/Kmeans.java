@@ -4,6 +4,7 @@ import java.nio.channels.NotYetConnectedException;
 import java.time.Year;
 import java.util.*;
 
+// implements Algoritm<Integer,List>doubld> {
 public class Kmeans {
 
     int numClusters;
@@ -44,25 +45,24 @@ public class Kmeans {
 
     public Map<Integer, List<Row>> createClusters(Table datos, List<Row> centroides){
         clusters=new HashMap<>();
-        for(int indice=0; indice<3; indice++)
+        double distMin =  new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(0), datos.filas.get(0).data);
+        int indiceCentroide = 0;
+        for(int indice=0; indice<numClusters; indice++)
             clusters.put(indice, new ArrayList<>());
-        for(int indiceRow=0; indiceRow<datos.filas.size(); indiceRow++){
-            double distMin=-1;
-            int indiceCentroide=-1;
-            for(int indiceCen = 0; indiceCen < centroides.size(); indiceCen++) {
-                double distEuclidea = new KNN().distanciaEuclidea((RowWithLabel) centroides.get(indiceCen), datos.filas.get(indiceRow).data);
-                if(distMin==-1){
-                    distMin=distEuclidea;
-                    indiceCentroide=indiceCen;
-                } else if(distEuclidea<=distMin){
-                    distMin=distEuclidea;
-                    indiceCentroide=indiceCen;
+        for (int iter = 0 ; iter < numIterations ; iter++) {
+            for (int indiceRow = 0; indiceRow < datos.filas.size(); indiceRow++) {
+                for (int indiceCen = 0; indiceCen < centroides.size(); indiceCen++) {
+                    double distEuclidea = new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(indiceCen), datos.filas.get(indiceRow).data);
+                    if (distEuclidea <= distMin) {
+                        distMin = distEuclidea;
+                        indiceCentroide = indiceCen;
+                    }
                 }
+                clusters.get(indiceCentroide).add(datos.getRowAt(indiceRow));
             }
-            clusters.get(indiceCentroide).add(datos.getRowAt(indiceRow));
+            for(int indice=0; indice<numClusters; indice++) //Asignamos los centros geométricos
+                asignCentroide(createCentroGeometrico(clusters.get(indice)), indice);
         }
-        for(int indice=0; indice<3; indice++) //Asignamos los centros geométricos
-            asignCentroide(createCentroGeometrico(clusters.get(indice)), indice);
         return clusters;
     }
 
@@ -90,6 +90,5 @@ public class Kmeans {
         centroides.get(indiceCentroide).data=centroGeometrico;
     }
 
-  
 
 }
