@@ -1,5 +1,7 @@
 package es.uji.al415617;
 
+import java.nio.channels.NotYetConnectedException;
+import java.time.Year;
 import java.util.*;
 
 public class Kmeans {
@@ -59,8 +61,35 @@ public class Kmeans {
             }
             clusters.get(indiceCentroide).add(datos.getRowAt(indiceRow));
         }
+        for(int indice=0; indice<3; indice++) //Asignamos los centros geométricos
+            asignCentroide(createCentroGeometrico(clusters.get(indice)), indice);
         return clusters;
     }
 
+
+    public List<Double> createCentroGeometrico (List<Row> cluster){
+        double xCentro=0;
+        double yCentro=0;
+        double zCentro=0;
+        for(Row elementoDeGrupo:cluster){
+            List<Double> datosElemento = elementoDeGrupo.data;
+            xCentro+=datosElemento.get(0);
+            yCentro+=datosElemento.get(1);
+            zCentro+=datosElemento.get(2);
+        }
+        List<Double> centroGeometrico = new ArrayList<>();
+        centroGeometrico.add(xCentro/cluster.size());
+        centroGeometrico.add(yCentro/cluster.size());
+        centroGeometrico.add(zCentro/cluster.size());
+
+        return centroGeometrico;
+    }
+
+
+    public void asignCentroide (List<Double> centroGeometrico, int indiceCentroide){
+        centroides.get(indiceCentroide).data=centroGeometrico;
+    }
+
+  
 
 }
