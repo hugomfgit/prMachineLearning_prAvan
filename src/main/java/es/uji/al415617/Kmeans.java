@@ -1,11 +1,9 @@
 package es.uji.al415617;
 
-import java.nio.channels.NotYetConnectedException;
-import java.time.Year;
 import java.util.*;
 
 // implements Algoritm<Integer,List>doubld> {
-public class Kmeans {
+public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
 
     int numClusters;
     int numIterations;
@@ -21,11 +19,27 @@ public class Kmeans {
     }
 
 
-    public void train(Table datos){
+    public void train(Table datos) throws ExceptionMoreGroupsThanData {
+
+        if(this.numClusters>datos.filas.size())
+            throw new ExceptionMoreGroupsThanData();
+
         Random random = new Random(this.seed);
         this.centroides = createCentroides(datos, random);
         this.clusters = createClusters(datos, centroides);
+    }
 
+    public Integer estimate(List<Double> dato){
+        double distMin =  new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(0), dato);
+        int indiceCentroide = 0;
+        for (int indiceCen = 0; indiceCen < centroides.size(); indiceCen++) {
+            double distEuclidea = new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(indiceCen), dato);
+            if (distEuclidea <= distMin) {
+                distMin = distEuclidea;
+                indiceCentroide = indiceCen;
+            }
+        }
+        return indiceCentroide;
     }
 
     public List<Row> createCentroides(Table datos, Random random){
@@ -89,6 +103,5 @@ public class Kmeans {
     public void asignCentroide (List<Double> centroGeometrico, int indiceCentroide){
         centroides.get(indiceCentroide).data=centroGeometrico;
     }
-
 
 }

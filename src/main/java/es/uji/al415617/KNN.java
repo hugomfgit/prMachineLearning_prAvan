@@ -1,7 +1,7 @@
 package es.uji.al415617;
 
 import java.util.List;
-public class KNN {
+public class KNN implements Algorithm<TableWithLabels, Integer, List<Double>> {
 
     public TableWithLabels tablaAlmacenada;
     public void train(TableWithLabels data){ //Almacena la Tabla Con Etiquetas con la que queremos entrenar la IA.
