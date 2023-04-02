@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public class CSV {
 
+    public CSV(){
+        super();
+    }
+
     public Table readTable(String ficheroDatos) {
         Scanner sc = null; //Creamos un scanner para leer el fichero dado.
         try {sc = new Scanner(new File(ficheroDatos));}

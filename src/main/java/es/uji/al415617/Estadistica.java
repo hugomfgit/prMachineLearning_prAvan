@@ -3,7 +3,6 @@ package es.uji.al415617;
 import java.util.List;
 
 public class Estadistica {
-
     public Estadistica(){
         super();
     }
@@ -24,5 +23,4 @@ public class Estadistica {
         double distEuclidea = Math.sqrt(sumatorio);
         return distEuclidea;
     }
-
 }

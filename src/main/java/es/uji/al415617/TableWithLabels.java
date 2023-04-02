@@ -13,6 +13,11 @@ public class TableWithLabels extends Table{
         labelsToIndex=new HashMap<>();
     }
 
+    public TableWithLabels() {
+        super();
+        labelsToIndex = new HashMap<>();
+    }
+
     public void addRowWithLabels(RowWithLabel fila){ //Añade una columna con etiquetas o RowWithLabel a la tabla.
         filas.add(fila);
     }
@@ -21,4 +26,5 @@ public class TableWithLabels extends Table{
         return (RowWithLabel) this.filas.get(indiceDeRow);
     }
 
+    public String toString(){return super.toString();}
 }

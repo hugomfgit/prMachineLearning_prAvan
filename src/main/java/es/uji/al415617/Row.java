@@ -7,6 +7,9 @@ public class Row {
 
     List<Double> data;
 
+    public Row(){
+        data = new ArrayList<>();
+    }
     public Row(List<Double> listaDeLaFila){ //Constructor. Crea una Row a partir de una lista de elementos Double con el contenido de la columna que queremos crear.
         data = listaDeLaFila;
     }

@@ -5,9 +5,13 @@ import java.util.List;
 
 public class Table {
 
-    public List<String> headers;
-    public List<Row> filas;
+    List<String> headers;
+    List<Row> filas;
 
+    public Table(){
+        headers = new ArrayList<>();
+        filas = new ArrayList<>();
+    }
     public Table(List<String> listaDeHeaders){ //Constructor. Crea una Tabla con sus cabeceras o headers.
         headers = listaDeHeaders;
         filas=new ArrayList<>();

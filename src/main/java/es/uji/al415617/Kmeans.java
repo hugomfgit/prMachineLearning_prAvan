@@ -16,9 +16,10 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
         this.numClusters=numClusters;
         this.numIterations=numIterations;
         this.seed=seed;
+        centroides = new ArrayList<>();
     }
 
-
+    @Override
     public void train(Table datos) throws ExceptionMoreGroupsThanData {
 
         if(this.numClusters>datos.filas.size())
@@ -29,6 +30,7 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
         this.clusters = createClusters(datos, centroides);
     }
 
+    @Override
     public Integer estimate(List<Double> dato){
         double distMin =  new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(0), dato);
         int indiceCentroide = 0;

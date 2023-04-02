@@ -3,11 +3,19 @@ package es.uji.al415617;
 import java.util.List;
 public class KNN implements Algorithm<TableWithLabels, Integer, List<Double>> {
 
-    public TableWithLabels tablaAlmacenada;
+    TableWithLabels tablaAlmacenada;
+
+    public KNN(){
+        super();
+        tablaAlmacenada = new TableWithLabels();
+    }
+
+    @Override
     public void train(TableWithLabels data){ //Almacena la Tabla Con Etiquetas con la que queremos entrenar la IA.
         tablaAlmacenada = data;
     }
 
+    @Override
     public Integer estimate(List<Double> data){ //Estima, a partir de una tabla dada con flores y sus respectivas clases, la clase que le correspondería a una nueva flor.
         double distMin=-1;
         int numClaseMin=-1;
