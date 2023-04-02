@@ -1,0 +1,18 @@
+
+Quiero que este metodo me devuelva una lista de doubles al pasarle un vector de Strings. Pero no lo consigo:
+
+        private List<String> conversorAListaStringAux (String[] vectorLinea){
+            List<String> listaLinea= new ArrayList<>();
+
+            for(int indiceH=0; indiceH<vectorLinea.length-1; indiceH++)
+                listaLinea.add(vectorLinea[indiceH]);
+            System.out.println("Aquí debe estar el error conversor: " + listaLinea.get(1));
+            return listaLinea;
+        }
+
+Los vectores de Srtings son así:
+
+[-10,-4]
+[-2,-4]
+[-30,-2]
+[-7,-1]
