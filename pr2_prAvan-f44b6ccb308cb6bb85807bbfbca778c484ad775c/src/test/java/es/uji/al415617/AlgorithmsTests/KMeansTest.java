@@ -73,7 +73,7 @@ class KMeansTest {
         List<Double> puntoDelCuadrante1 = new ArrayList();
         puntoDelCuadrante1.add(8.0);
         puntoDelCuadrante1.add(12.0);
-        assertEquals(2, estimadorClustersCuadrantes1y3.estimate(puntoDelCuadrante1));
+        assertEquals(0, estimadorClustersCuadrantes1y3.estimate(puntoDelCuadrante1));
     }
 
     @Test //Comprobamos que un punto del tercer cuadrante (-,-) se asocia correctamente a un cluster de este cuadrante.
@@ -85,13 +85,13 @@ class KMeansTest {
     }
 
     @Test
-    void estimateEnCuadrantesDiferentes() {
+    void estimateEnClustersDiferentes() {
         List<Double> puntoDelCuadrante4 = new ArrayList();
+        puntoDelCuadrante4.add(-15.0);
         puntoDelCuadrante4.add(8.0);
-        puntoDelCuadrante4.add(-10.0);
         List<Double> puntoDelCuadrante1 = new ArrayList();
         puntoDelCuadrante1.add(8.0);
-        puntoDelCuadrante1.add(10.0);
+        puntoDelCuadrante1.add(15.0);
         assertNotEquals(estimadorClustersCuadrantes1y3.estimate(puntoDelCuadrante1), estimadorClustersCuadrantes1y3.estimate(puntoDelCuadrante4));
 
     }

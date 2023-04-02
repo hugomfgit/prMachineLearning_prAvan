@@ -14,7 +14,7 @@ public class Estadistica {
         double ElmFlorTabl;
         double ElmFlorNew;
 
-        for(int indice=0; indice<florDeLaTabla.size()-1; indice++){
+        for(int indice=0; indice<florNueva.size(); indice++){
             ElmFlorNew = florNueva.get(indice);
             ElmFlorTabl = florDeLaTabla.get(indice);
 

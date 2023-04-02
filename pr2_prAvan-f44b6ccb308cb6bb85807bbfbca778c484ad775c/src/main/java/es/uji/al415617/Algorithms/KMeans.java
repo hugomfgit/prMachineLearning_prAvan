@@ -48,6 +48,8 @@ public class KMeans implements Algorithm<Table, Integer, List<Double>> {
                 indiceCentroide = indiceCen;
             }
         }
+        System.out.println("Centroide 0: " + centroides.get(0).data);
+        System.out.println("Centroide 1: " + centroides.get(1).data);
         return indiceCentroide;
     }
 
