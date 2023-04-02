@@ -1,4 +1,4 @@
-package es.uji.al415617;
+package es.uji.al415617.CompositionTests;
 
 import es.uji.al415617.Composition.Reading.CSV;
 
