@@ -1,4 +1,11 @@
-package es.uji.al415617;
+package es.uji.al415617.Algorithms;
+
+import es.uji.al415617.Composition.Rows.Row;
+import es.uji.al415617.Composition.Rows.RowWithLabel;
+import es.uji.al415617.Composition.Tables.Table;
+import es.uji.al415617.Exceptions.ExceptionMoreGroupsThanData;
+import es.uji.al415617.Interfaces.Algorithm;
+import es.uji.al415617.Maths.Estadistica;
 
 import java.util.*;
 
@@ -44,7 +51,7 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
         return indiceCentroide;
     }
 
-    public List<Row> createCentroides(Table datos, Random random){
+    private List<Row> createCentroides(Table datos, Random random){
         List<Row> centroides = new ArrayList<>();
         Set<Integer> indicesRandomizados = new HashSet<>();
         for(int contador=0; contador<3; contador++){
@@ -59,7 +66,7 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
         return centroides;
     }
 
-    public Map<Integer, List<Row>> createClusters(Table datos, List<Row> centroides){
+    private Map<Integer, List<Row>> createClusters(Table datos, List<Row> centroides){
         clusters=new HashMap<>();
         double distMin =  new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(0), datos.filas.get(0).data);
         int indiceCentroide = 0;
@@ -83,7 +90,7 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
     }
 
 
-    public List<Double> createCentroGeometrico (List<Row> cluster){
+    private List<Double> createCentroGeometrico (List<Row> cluster){
         double xCentro=0;
         double yCentro=0;
         double zCentro=0;
@@ -102,7 +109,7 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
     }
 
 
-    public void asignCentroide (List<Double> centroGeometrico, int indiceCentroide){
+    private void asignCentroide (List<Double> centroGeometrico, int indiceCentroide){
         centroides.get(indiceCentroide).data=centroGeometrico;
     }
 

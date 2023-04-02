@@ -1,12 +1,14 @@
-package es.uji.al415617;
+package es.uji.al415617.Composition.Tables;
+
+import es.uji.al415617.Composition.Rows.Row;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
 
-    List<String> headers;
-    List<Row> filas;
+    public List<String> headers;
+    public List<Row> filas;
 
     public Table(){
         headers = new ArrayList<>();

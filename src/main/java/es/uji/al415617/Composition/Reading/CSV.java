@@ -1,4 +1,9 @@
-package es.uji.al415617;
+package es.uji.al415617.Composition.Reading;
+
+import es.uji.al415617.Composition.Rows.Row;
+import es.uji.al415617.Composition.Rows.RowWithLabel;
+import es.uji.al415617.Composition.Tables.Table;
+import es.uji.al415617.Composition.Tables.TableWithLabels;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,7 +37,7 @@ public class CSV {
         return tablaSinIndices; //Devolvemos la tabla.
     }
 
-    public List<String> conversorAListaStringAux (String[] vectorLinea){ //Método auxiliar. Convierte un vector de String en una Lista con el tipo que indiquemos.
+    private List<String> conversorAListaStringAux (String[] vectorLinea){ //Método auxiliar. Convierte un vector de String en una Lista con el tipo que indiquemos.
         List<String> listaLinea= new ArrayList<>();
 
         for(int indiceH=0; indiceH<vectorLinea.length-1; indiceH++)
@@ -40,7 +45,7 @@ public class CSV {
         return listaLinea;
     }
 
-    public List<Double> conversorAListaDoubleAux (String[] vectorLinea){ //Método auxiliar. Convierte un vector de String en una Lista con el tipo que indiquemos.
+    private List<Double> conversorAListaDoubleAux (String[] vectorLinea){ //Método auxiliar. Convierte un vector de String en una Lista con el tipo que indiquemos.
         List<Double> listaLinea= new ArrayList<>();
 
         for(int indiceH=0; indiceH<vectorLinea.length-1; indiceH++)
@@ -70,7 +75,7 @@ public class CSV {
         return tablaConIndices;
     }
 
-    public int elegirNumClaseAux(TableWithLabels tablaConIndices, String claseDeFlor){ //Método auxiliar. Elige el número de clase que le corresponde a una flor dada y, si este no existía, lo introduce en el mapa de la Tabla Con Etiquetas dada.
+    private int elegirNumClaseAux(TableWithLabels tablaConIndices, String claseDeFlor){ //Método auxiliar. Elige el número de clase que le corresponde a una flor dada y, si este no existía, lo introduce en el mapa de la Tabla Con Etiquetas dada.
         int indiceNumClase = tablaConIndices.labelsToIndex.keySet().size();
         if(tablaConIndices.labelsToIndex.containsKey(claseDeFlor)){
             indiceNumClase=tablaConIndices.labelsToIndex.get(claseDeFlor);

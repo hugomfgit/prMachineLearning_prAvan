@@ -1,5 +1,10 @@
 package es.uji.al415617;
 
+import es.uji.al415617.Algorithms.KNN;
+import es.uji.al415617.Composition.Reading.CSV;
+import es.uji.al415617.Composition.Rows.RowWithLabel;
+import es.uji.al415617.Composition.Tables.TableWithLabels;
+
 import java.util.ArrayList;
 import java.util.List;
 

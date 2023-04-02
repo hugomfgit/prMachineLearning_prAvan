@@ -1,4 +1,6 @@
-package es.uji.al415617;
+package es.uji.al415617.Maths;
+
+import es.uji.al415617.Composition.Rows.RowWithLabel;
 
 import java.util.List;
 

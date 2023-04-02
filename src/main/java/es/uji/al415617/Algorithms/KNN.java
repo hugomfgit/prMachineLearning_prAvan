@@ -1,4 +1,9 @@
-package es.uji.al415617;
+package es.uji.al415617.Algorithms;
+
+import es.uji.al415617.Interfaces.Algorithm;
+import es.uji.al415617.Maths.Estadistica;
+import es.uji.al415617.Composition.Rows.RowWithLabel;
+import es.uji.al415617.Composition.Tables.TableWithLabels;
 
 import java.util.List;
 public class KNN implements Algorithm<TableWithLabels, Integer, List<Double>> {

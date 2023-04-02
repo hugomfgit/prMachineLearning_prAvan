@@ -1,4 +1,6 @@
-package es.uji.al415617;
+package es.uji.al415617.Composition.Tables;
+
+import es.uji.al415617.Composition.Rows.RowWithLabel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.Map;
 
 public class TableWithLabels extends Table{
 
-    Map<String, Integer> labelsToIndex;
+    public Map<String, Integer> labelsToIndex;
 
     public TableWithLabels(List<String> listaDeHeaders) { //Constructor. Crea una Tabla con Etiquetas con sus cabeceras o headers.
         super(listaDeHeaders);

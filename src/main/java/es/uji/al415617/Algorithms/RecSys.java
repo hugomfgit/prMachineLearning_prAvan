@@ -1,4 +1,8 @@
-package es.uji.al415617;
+package es.uji.al415617.Algorithms;
+
+import es.uji.al415617.Composition.Tables.Table;
+import es.uji.al415617.Exceptions.ExceptionMoreGroupsThanData;
+import es.uji.al415617.Interfaces.Algorithm;
 
 import java.util.ArrayList;
 import java.util.HashMap;

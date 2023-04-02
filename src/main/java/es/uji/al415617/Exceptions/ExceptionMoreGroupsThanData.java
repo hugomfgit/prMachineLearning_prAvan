@@ -1,4 +1,4 @@
-package es.uji.al415617;
+package es.uji.al415617.Exceptions;
 
 public class ExceptionMoreGroupsThanData extends Exception {
     public ExceptionMoreGroupsThanData(){
