@@ -8,7 +8,7 @@ import java.util.List;
 public class Table {
 
     public List<String> headers;
-    public List<Row> filas;
+    protected List<Row> filas;
 
     public Table(){
         headers = new ArrayList<>();
@@ -27,4 +27,6 @@ public class Table {
         return filas.get(rowNumber);
     }
 
+    //Métodos para saveTable:
+    public int getNumRows(){return filas.size();}
 }

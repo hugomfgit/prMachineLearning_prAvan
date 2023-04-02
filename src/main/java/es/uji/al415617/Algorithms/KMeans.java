@@ -10,7 +10,7 @@ import es.uji.al415617.Maths.Estadistica;
 import java.util.*;
 
 // implements Algoritm<Integer,List>doubld> {
-public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
+public class KMeans implements Algorithm<Table, Integer, List<Double>> {
 
     int numClusters;
     int numIterations;
@@ -19,7 +19,7 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
     Map<Integer, List<Row>> clusters;
     List<Row> centroides;
 
-    public Kmeans(int numClusters, int numIterations, long seed){
+    public KMeans(int numClusters, int numIterations, long seed){
         this.numClusters=numClusters;
         this.numIterations=numIterations;
         this.seed=seed;
@@ -29,7 +29,7 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
     @Override
     public void train(Table datos) throws ExceptionMoreGroupsThanData {
 
-        if(this.numClusters>datos.filas.size())
+        if(this.numClusters>datos.getNumRows()) //Lanza una excepción cuando se piden más clusters que el número de datos con los que contamos
             throw new ExceptionMoreGroupsThanData();
 
         Random random = new Random(this.seed);
@@ -39,10 +39,10 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
 
     @Override
     public Integer estimate(List<Double> dato){
-        double distMin =  new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(0), dato);
+        double distMin =  new Estadistica().distanciaEuclidea(centroides.get(0).data, dato);
         int indiceCentroide = 0;
         for (int indiceCen = 0; indiceCen < centroides.size(); indiceCen++) {
-            double distEuclidea = new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(indiceCen), dato);
+            double distEuclidea = new Estadistica().distanciaEuclidea(centroides.get(indiceCen).data, dato);
             if (distEuclidea <= distMin) {
                 distMin = distEuclidea;
                 indiceCentroide = indiceCen;
@@ -54,11 +54,11 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
     private List<Row> createCentroides(Table datos, Random random){
         List<Row> centroides = new ArrayList<>();
         Set<Integer> indicesRandomizados = new HashSet<>();
-        for(int contador=0; contador<3; contador++){
-            int indiceRandomizado = random.nextInt(datos.filas.size());
+        for(int contador=0; contador<numClusters; contador++){
+            int indiceRandomizado = random.nextInt(datos.getNumRows());
             indicesRandomizados.add(indiceRandomizado);
             while (indicesRandomizados.contains(indiceRandomizado))
-                indiceRandomizado = random.nextInt(datos.filas.size());
+                indiceRandomizado = random.nextInt(datos.getNumRows());
 
             Row centroide = datos.getRowAt(indiceRandomizado);
             centroides.add(centroide);
@@ -68,14 +68,14 @@ public class Kmeans implements Algorithm<Table, Integer, List<Double>> {
 
     private Map<Integer, List<Row>> createClusters(Table datos, List<Row> centroides){
         clusters=new HashMap<>();
-        double distMin =  new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(0), datos.filas.get(0).data);
+        double distMin =  new Estadistica().distanciaEuclidea(centroides.get(0).data, datos.getRowAt(0).data);
         int indiceCentroide = 0;
         for(int indice=0; indice<numClusters; indice++)
             clusters.put(indice, new ArrayList<>());
         for (int iter = 0 ; iter < numIterations ; iter++) {
-            for (int indiceRow = 0; indiceRow < datos.filas.size(); indiceRow++) {
+            for (int indiceRow = 0; indiceRow < datos.getNumRows(); indiceRow++) {
                 for (int indiceCen = 0; indiceCen < centroides.size(); indiceCen++) {
-                    double distEuclidea = new Estadistica().distanciaEuclidea((RowWithLabel) centroides.get(indiceCen), datos.filas.get(indiceRow).data);
+                    double distEuclidea = new Estadistica().distanciaEuclidea(centroides.get(indiceCen).data, datos.getRowAt(indiceRow).data);
                     if (distEuclidea <= distMin) {
                         distMin = distEuclidea;
                         indiceCentroide = indiceCen;

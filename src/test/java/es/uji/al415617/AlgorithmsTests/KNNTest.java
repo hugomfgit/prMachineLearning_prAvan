@@ -4,6 +4,7 @@ import es.uji.al415617.Algorithms.KNN;
 import es.uji.al415617.Composition.Reading.CSV;
 import es.uji.al415617.Composition.Rows.RowWithLabel;
 import es.uji.al415617.Composition.Tables.TableWithLabels;
+import es.uji.al415617.Maths.Estadistica;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ class KNNTest {
     @org.junit.jupiter.api.Test
     void KNNClaseCorrect() {
         knnCsv.train(tabla);
-        assertEquals(0,knnCsv.estimate(tabla.filas.get(0).data));
+        assertEquals(0,knnCsv.estimate(tabla.getRowAt(0).data));
         System.out.println("Prueba numero filas Table pasada.\n");
     }
 
@@ -38,7 +39,7 @@ class KNNTest {
         fila5.add(1.4);
         fila5.add(0.2);
 
-        assertEquals(0,knnCsv.distanciaEuclidea(flor,fila5), 1);
+        assertEquals(0,new Estadistica().distanciaEuclidea(flor.data,fila5), 1);
         System.out.println("Prueba numero filas Table pasada.\n");
     }
 

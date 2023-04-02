@@ -13,13 +13,13 @@ class CSVTest {
 
     @org.junit.jupiter.api.Test
     void readFilasTable() {
-        assertEquals(150,csv_fichero.readTable("src/files/iris.csv").filas.size());
+        assertEquals(150,csv_fichero.readTable("src/files/iris.csv").getNumRows());
         System.out.println("Prueba número filas de Table pasada.\n");
     }
 
     @org.junit.jupiter.api.Test
     void readColTable() {
-        assertEquals(4,csv_fichero.readTable("src/files/iris.csv").filas.get(0).data.size());
+        assertEquals(4,csv_fichero.readTable("src/files/iris.csv").getRowAt(0).data.size());
         System.out.println("Prueba número columnas de Table pasada.\n");
     }
 
@@ -48,14 +48,14 @@ class CSVTest {
 
     @org.junit.jupiter.api.Test
     void readFilasTableWithLabels() {
-        assertEquals(150,csv_fichero.readTableWithLabels("src/files/iris.csv").filas.size());
+        assertEquals(150,csv_fichero.readTableWithLabels("src/files/iris.csv").getNumRows());
         System.out.println("Primera prueba de readTableWithLabels pasada.\n");
     }
 
 
     @org.junit.jupiter.api.Test
     void readColTableWithLabels() {
-        assertEquals(4,csv_fichero.readTable("src/files/iris.csv").filas.get(0).data.size());
+        assertEquals(4,csv_fichero.readTable("src/files/iris.csv").getRowAt(0).data.size());
         System.out.println("Prueba número columnas Table pasada.\n");
     }
 

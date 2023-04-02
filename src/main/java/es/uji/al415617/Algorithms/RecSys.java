@@ -41,8 +41,8 @@ public class RecSys {
     }
 
     private void estimate(){
-        for(int indice=0; indice<tablaDeDatos.filas.size(); indice++){
-            mapaGrupos.put(indice, (Integer) algoritmo.estimate(tablaDeDatos.filas.get(indice)));
+        for(int indice=0; indice<tablaDeDatos.getNumRows(); indice++){
+            mapaGrupos.put(indice, (Integer) algoritmo.estimate(tablaDeDatos.getRowAt(indice)));
         }
     }
 
@@ -52,7 +52,7 @@ public class RecSys {
 
     private void selectItems(int idxLikedItem, int labelLikedItem, int numRec){
         indicesSimilares = new ArrayList<>();
-        for(int indice=0; indice<tablaDeDatos.filas.size(); indice++){
+        for(int indice=0; indice<tablaDeDatos.getNumRows(); indice++){
             if(labelLikedItem == mapaGrupos.get(indice) & idxLikedItem!=indice){
                 indicesSimilares.add(indice);
             }

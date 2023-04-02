@@ -8,15 +8,15 @@ public class Estadistica {
     public Estadistica(){
         super();
     }
-    public double distanciaEuclidea(RowWithLabel florDeLaTabla, List<Double> florNueva){ //Calcula la Distancia Euclidiana entre dos flores.
+    public double distanciaEuclidea(List<Double> florDeLaTabla, List<Double> florNueva){ //Calcula la Distancia Euclidiana entre dos flores.
         double difColumna;
         double sumatorio=0;
         double ElmFlorTabl;
         double ElmFlorNew;
 
-        for(int indice=0; indice<florDeLaTabla.data.size(); indice++){
+        for(int indice=0; indice<florDeLaTabla.size(); indice++){
             ElmFlorNew = florNueva.get(indice);
-            ElmFlorTabl = florDeLaTabla.data.get(indice);
+            ElmFlorTabl = florDeLaTabla.get(indice);
 
             difColumna = ElmFlorTabl - ElmFlorNew;
             difColumna = Math.pow(difColumna, 2);

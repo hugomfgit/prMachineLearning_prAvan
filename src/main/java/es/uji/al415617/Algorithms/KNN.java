@@ -25,9 +25,9 @@ public class KNN implements Algorithm<TableWithLabels, Integer, List<Double>> {
         double distMin=-1;
         int numClaseMin=-1;
 
-        for(int indiceRow=0; indiceRow<tablaAlmacenada.filas.size(); indiceRow++){
+        for(int indiceRow=0; indiceRow<tablaAlmacenada.getNumRows(); indiceRow++){
             RowWithLabel flor = tablaAlmacenada.getRowAt(indiceRow);
-            double distEuclidea = new Estadistica().distanciaEuclidea(flor, data);
+            double distEuclidea = new Estadistica().distanciaEuclidea(flor.data, data);
             if(distMin==-1){
                 distMin=distEuclidea;
                 numClaseMin=flor.getNumberClass();
